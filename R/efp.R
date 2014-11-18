@@ -1,4 +1,4 @@
-efp <- function(formula, data = list(),
+efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, weights,
                 type = c("Rec-CUSUM", "OLS-CUSUM", "Rec-MOSUM", "OLS-MOSUM",
                 "RE", "ME", "Score-CUSUM", "Score-MOSUM", "fluctuation"),
                 h = 0.15, dynamic = FALSE, rescale = TRUE)
@@ -70,8 +70,19 @@ efp <- function(formula, data = list(),
            ## empirical process of OLS-based CUSUM model
 
            "OLS-CUSUM" = {
-               fm <- lm.fit(X,y)
-               e <- fm$residuals
+               if (spatial = FALSE)
+               {
+                fm <- lm.fit(X,y)
+                e <- fm$residuals
+               }
+               if (spatial = TRUE)
+               {
+                fm <- spautolm(formula, data = data, listw=listw, weights=weights,
+                  na.action, family = family, method="eigen", verbose = NULL, trs=NULL,
+                      interval=NULL, zero.policy = NULL, tol.solve=.Machine$double.eps,
+                      llprof=NULL, control=list())
+                e<-fm$residuals
+               }
                sigma <- sqrt(sum(e^2)/fm$df.residual)
                process <- cumsum(c(0,e))/(sigma*sqrt(n))
                if(is.ts(data)) {
