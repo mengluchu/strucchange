@@ -390,3 +390,12 @@ structure(c(2.25506699807814, 2.36269715842798, 2.39111391987183,
 2.68790297634607, 2.69906329786404, 2.70691143510841), .Dim = c(5, 
 2), .Dimnames = list(c("2", "4", "6", "8", "10"), c("0.9", "0.95"
 )))
+
+library(abind)
+
+d <- monitorMECritvalData(n = 1000,end = as.numeric(dimnames(monitorMECritvalTable)[[2]]), h = h)
+tab <- monitorMECritval(d,probs = as.numeric(dimnames(monitorMECritvalTable)[[3]]))
+tab<-drop(tab)
+c<-abind(monitorMECritvalTable,tab,along=1)
+dimnames(monitorMECritvalTable)[[1]]<-c( as.character(h), "0.25", "0.5",  "1")
+
