@@ -96,12 +96,12 @@ mefp.efp <-
         if(is.null(CritvalTable))
              monitorMECritvalTable<- get("monitorMECritvalTable")
             d <- monitorMECritvalData(n = 1000,end = as.numeric(dimnames(monitorMECritvalTable)[[2]]), h = h)
-tab <- monitorMECritval(d,probs = as.numeric(dimnames(monitorMECritvalTable)[[3]]))
-tab<-drop(tab)
-c<-abind(monitorMECritvalTable,tab,along=1)
-dimnames(monitorMECritvalTable)[[1]]<-c( as.character(h), "0.25", "0.5",  "1")
-CritvalTable<-monitorMECritvalTable
-        dntab <- dimnames(CritvalTable)
+            tab <- monitorMECritval(d,probs = as.numeric(dimnames(monitorMECritvalTable)[[3]]))
+            tab<-drop(tab)
+            c<-abind(monitorMECritvalTable,tab,along=1)
+            dimnames(monitorMECritvalTable)[[1]]<-c( as.character(h), "0.25", "0.5",  "1")
+            CritvalTable<-monitorMECritvalTable
+            dntab <- dimnames(CritvalTable)
         if(!(winsize %in% dntab[[1]]))
             stop(paste("winsize h =",winsize,"not available, we have:",
                        paste(dntab[[1]], collapse=", ")))
