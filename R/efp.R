@@ -70,19 +70,19 @@ efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, w
            ## empirical process of OLS-based CUSUM model
 
            "OLS-CUSUM" = {
-               if (spatial = FALSE)
-               {
+              # if (spatial = FALSE)
+              # {
                 fm <- lm.fit(X,y)
                 e <- fm$residuals
-               }
-               if (spatial = TRUE)
-               {
-                fm <- spautolm(formula, data = data, listw=listw, weights=weights,
-                  na.action, family = family, method="eigen", verbose = NULL, trs=NULL,
-                      interval=NULL, zero.policy = NULL, tol.solve=.Machine$double.eps,
-                      llprof=NULL, control=list())
-                e<-fm$residuals
-               }
+              # }
+              # if (spatial = TRUE)
+              # {
+               # fm <- spautolm(formula, data = data, listw=listw, weights=weights,
+               #   na.action, family = family, method="eigen", verbose = NULL, trs=NULL,
+              #        interval=NULL, zero.policy = NULL, tol.solve=.Machine$double.eps,
+               #       llprof=NULL, control=list())
+               # e<-fm$residuals
+              # }
                sigma <- sqrt(sum(e^2)/fm$df.residual)
                process <- cumsum(c(0,e))/(sigma*sqrt(n))
                if(is.ts(data)) {
