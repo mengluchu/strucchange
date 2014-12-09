@@ -96,9 +96,11 @@ mefp.efp <-
         if(is.null(CritvalTable))
              monitorMECritvalTable<- get("monitorMECritvalTable")
             d <- monitorMECritvalData(n = 1000,end = as.numeric(dimnames(monitorMECritvalTable)[[2]]), h = h)
+             
             tab <- monitorMECritval(d,probs = as.numeric(dimnames(monitorMECritvalTable)[[3]]))
             tab<-drop(tab)
-            c<-abind(monitorMECritvalTable,tab,along=1)
+            cob<-abind(monitorMECritvalTable,tab,along=1)
+            monitorMECritvalTable<-cob
             dimnames(monitorMECritvalTable)[[1]]<-c( as.character(h), "0.25", "0.5",  "1")
             CritvalTable<-monitorMECritvalTable
             dntab <- dimnames(CritvalTable)
