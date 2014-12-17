@@ -1,6 +1,6 @@
 efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, weights,
                 type = c("Rec-CUSUM", "OLS-CUSUM", "Rec-MOSUM", "OLS-MOSUM",
-                "RE", "ME", "Score-CUSUM", "Score-MOSUM", "fluctuation"),
+                "RE", "ME", "Score-CUSUM", "Score-MOSUM", "fluctuation",spatial1),
                 h = 0.15, dynamic = FALSE, rescale = TRUE)
 {
     if(!inherits(formula, "formula")) {
@@ -70,11 +70,12 @@ efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, w
            ## empirical process of OLS-based CUSUM model
 
            "OLS-CUSUM" = {
-              # if (spatial = FALSE)
-              # {
+               if (spatial1 = NULL)
+               {
                 fm <- lm.fit(X,y)
                 e <- fm$residuals
-              # }
+               } else { e<- spatial1 }
+               
               # if (spatial = TRUE)
               # {
                # fm <- spautolm(formula, data = data, listw=listw, weights=weights,
