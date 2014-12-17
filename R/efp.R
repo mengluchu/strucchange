@@ -1,6 +1,6 @@
 efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, weights,
                 type = c("Rec-CUSUM", "OLS-CUSUM", "Rec-MOSUM", "OLS-MOSUM",
-                "RE", "ME", "Score-CUSUM", "Score-MOSUM", "fluctuation",spatial1),
+                "RE", "ME", "Score-CUSUM", "Score-MOSUM", "fluctuation"), spatial1,
                 h = 0.15, dynamic = FALSE, rescale = TRUE)
 {
     if(!inherits(formula, "formula")) {
