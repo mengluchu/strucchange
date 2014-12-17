@@ -70,7 +70,7 @@ efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, w
            ## empirical process of OLS-based CUSUM model
 
            "OLS-CUSUM" = {
-               if (spatial1 = NULL)
+               if (spatial1 == NULL)
                {
                 fm <- lm.fit(X,y)
                 e <- fm$residuals
