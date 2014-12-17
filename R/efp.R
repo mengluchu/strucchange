@@ -18,6 +18,7 @@ efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, w
     }  
    
     n <- nrow(X)
+    
     if(dynamic)
     {
       Xnames <- colnames(X)
@@ -85,7 +86,7 @@ efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, w
                #       llprof=NULL, control=list())
                # e<-fm$residuals
               # }
-               sigma <- sqrt(sum(e^2)/fm$df.residual)
+               sigma <- sqrt(sum(e^2)/(n-k))
                process <- cumsum(c(0,e))/(sigma*sqrt(n))
                if(is.ts(data)) {
                    if(NROW(data) == n) process <- ts(process, end = end(data), frequency = frequency(data))
