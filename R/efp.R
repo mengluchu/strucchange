@@ -142,7 +142,7 @@ efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, w
                 fm <- lm.fit(X,y)
                 e <- fm$residuals
                } else { e<- spatial1 }
-               sigma <- sqrt(sum(e^2)/fm$df.residual)
+               sigma <- sqrt(sum(e^2)/(n-k))
                nh <- floor(n*h)
                process <- cumsum(c(0,e))
                process <- process[-(1:nh)] - process[1:(n-nh+1)]
