@@ -137,8 +137,11 @@ efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, w
            ## empirical process of OLS-based MOSUM model
 
            "OLS-MOSUM" = {
-               fm <- lm.fit(X,y)
-               e <- fm$residuals
+                if (length(spatial1)==0)
+               {
+                fm <- lm.fit(X,y)
+                e <- fm$residuals
+               } else { e<- spatial1 }
                sigma <- sqrt(sum(e^2)/fm$df.residual)
                nh <- floor(n*h)
                process <- cumsum(c(0,e))
