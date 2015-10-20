@@ -852,7 +852,7 @@ lines.efp <- function(x, functional = "max", ...)
     lines(z, ...)
 }
 
-=======
+ 
 
 efp <- function(formula, data = list(), spatial = FALSE, family = "SAR",listw, weights,
                 type = c("Rec-CUSUM", "OLS-CUSUM", "Rec-MOSUM", "OLS-MOSUM",
@@ -1711,4 +1711,4 @@ lines.efp <- function(x, functional = "max", ...)
     lines(z, ...)
 }
 
->>>>>>> b960e841368e0263cbe1a3f3125aad6ee5a237d4
+ 
