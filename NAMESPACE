@@ -60,7 +60,7 @@ export(
   "monitorMECritvalTable",
   "monitorRECritval",
   "monitorRECritvalData",
-  "monitorRECritvalTable",
+  "monitorRECritvalTable"
  
 )
 
