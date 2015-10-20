@@ -288,7 +288,8 @@ monitor <- function(obj,  data=NULL, verbose=TRUE){
     }
     else
     {
-      obj$process <- obj$computeEmpProc(X=x,y=y,fittednew=obj$fittednew)[-(1:length(obj$efpprocess))]
+      
+      obj$process <- obj$computeEmpProc(X=x,Y=y,fittednew=obj$fittednew)[-(1:length(obj$efpprocess))]
     }
     boundary <- obj$border((obj$histsize+1):nrow(x))
     obj$statistic <- max(abs(obj$process))
