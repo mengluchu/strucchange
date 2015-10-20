@@ -1,4 +1,4 @@
-import("stats", "graphics", "zoo", "sandwich")
+import("stats", "graphics", "zoo", "sandwich" )
 
 export(
 ## testing
@@ -60,7 +60,9 @@ export(
   "monitorMECritvalTable",
   "monitorRECritval",
   "monitorRECritvalData",
-  "monitorRECritvalTable")
+  "monitorRECritvalTable",
+ 
+)
 
 ## methods to new generics
 S3method("sctest", "default")
