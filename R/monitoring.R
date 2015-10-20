@@ -38,7 +38,7 @@ mefp.formula <-
 mefp.efp <-
   function(obj, alpha=0.05, functional = c("max", "range"),
            period=10, tolerance=.Machine$double.eps^0.5,
-           CritvalTable=NULL, rescale=NULL, border=NULL, fittednew=f1,...)
+           CritvalTable=NULL, rescale=NULL, border=NULL, fittednew=fittednew,...)
   {
     functional <- match.arg(functional)
     if(! (obj$type %in% c("OLS-CUSUM", "OLS-MOSUM", "ME", "RE")))
@@ -289,7 +289,7 @@ monitor <- function(obj,  data=NULL, verbose=TRUE){
     else
     {
       
-      obj$process <- obj$computeEmpProc(X=x,Y=y,fittednew=obj$fittednew)[-(1:length(obj$efpprocess))]
+      obj$process <- obj$computeEmpProc(X=x,y=y,fittednew=obj$fittednew)[-(1:length(obj$efpprocess))]
     }
     boundary <- obj$border((obj$histsize+1):nrow(x))
     obj$statistic <- max(abs(obj$process))
